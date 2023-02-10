@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:transport/core/constants/color_constant.dart';
 import 'package:transport/core/constants/string_constant.dart';
+import 'package:transport/core/widgets/stepper.dart';
 import 'package:transport_mock_library/transport_mock_library.dart';
 
 class TruckDetailsPage extends StatelessWidget {
@@ -25,6 +26,7 @@ class TruckDetailsPage extends StatelessWidget {
           children: [
             _fleetOperator(truck: repository.truckData()),
             _truckDriver(truck: repository.truckData()),
+            _truckStatus()
           ]),
     );
   }
@@ -195,5 +197,41 @@ class TruckDetailsPage extends StatelessWidget {
         ]),
       ),
     );
+  }
+
+  Widget _truckStatus() {
+    return Card(
+        shape:
+        RoundedRectangleBorder(borderRadius: BorderRadius.circular(18.0)),
+        color: ColorConstant.kCardColor,
+        margin: const EdgeInsets.all(10.0),
+        child: Container(
+            padding: const EdgeInsets.all(8),
+            decoration: BoxDecoration(
+                color: ColorConstant.kCardColor,
+                borderRadius: BorderRadius.circular(18.0)),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                const Text(
+                  StringConstant.truckStatus,
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700),
+                ),
+                const SizedBox(
+                  height: 8,
+                ),
+                StepProgressView(
+                  curStep: 4,
+                  titles: const [
+                    StringConstant.pickup,
+                    StringConstant.inTransitDropoff,
+                    StringConstant.atDropoff,
+                    StringConstant.delivered
+                  ],
+                  color: ColorConstant.kCardIconColor,
+                  width: 70,
+                )
+              ],
+            )));
   }
 }

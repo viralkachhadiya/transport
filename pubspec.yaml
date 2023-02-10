@@ -32,8 +32,6 @@ dependencies:
     sdk: flutter
   # https://pub.dev/packages/auto_route
   auto_route: ^5.0.4
-  # https://pub.dev/packages/google_fonts
-  google_fonts: ^4.0.3
   transport_mock_library:
     path: packages/transport_mock_library
 

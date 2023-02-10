@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:transport/core/constants/color_constant.dart';
 import 'package:transport/core/constants/string_constant.dart';
 import 'package:transport/core/router/router_path.dart';
+import 'package:transport/core/widgets/stepper.dart';
 import 'package:transport_mock_library/transport_mock_library.dart';
 
 class OrderDetailsPage extends StatelessWidget {
@@ -26,6 +27,7 @@ class OrderDetailsPage extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 10.0),
           children: [
             _order(order: repository.orderData()),
+            _loadStatus(),
             _fleetOperator(order: repository.orderData()),
             _truckDriver(context: context, order: repository.orderData()),
           ]),
@@ -181,6 +183,42 @@ class OrderDetailsPage extends StatelessWidget {
                     ],
                   ),
                 ])));
+  }
+
+  Widget _loadStatus() {
+    return Card(
+        shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(18.0)),
+        color: ColorConstant.kCardColor,
+        margin: const EdgeInsets.all(10.0),
+        child: Container(
+            padding: const EdgeInsets.all(8),
+            decoration: BoxDecoration(
+                color: ColorConstant.kCardColor,
+                borderRadius: BorderRadius.circular(18.0)),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                const Text(
+                  StringConstant.loadStatus,
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700),
+                ),
+                const SizedBox(
+                  height: 8,
+                ),
+                StepProgressView(
+                  curStep: 4,
+                  titles: const [
+                    StringConstant.pending,
+                    StringConstant.quoted,
+                    StringConstant.scheduled,
+                    StringConstant.inProgress
+                  ],
+                  color: ColorConstant.kCardIconColor,
+                  width: 70,
+                )
+              ],
+            )));
   }
 
   Widget _fleetOperator({required OrderDetails order}) {

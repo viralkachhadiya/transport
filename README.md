@@ -1,16 +1,28 @@
-# transport
+## Truck Transportation
 
-A new Flutter project.
+A new Flutter Mobile project.
 
-## Getting Started
+### How to run the mobile application
+You need to write this command line on terminal.
 
-This project is a starting point for a Flutter application.
+### Instalation
+```yaml
+dependencies:        
+  auto_route: ^5.0.4
+        
+dev_dependencies:        
+  auto_route_generator: ^5.0.3
+  build_runner: 
+```
 
-A few resources to get you started if this is your first Flutter project:
+### Setup And Usage
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+The router class will be in `lib/core/router/route_management.dart`
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+This cmd run the build process
+```
+flutter clean
+flutter pub get
+# https://flutter.dev/docs/development/data-and-backend/json#generating-code-continuously
+flutter pub run build_runner watch --delete-conflicting-outputs
+```
