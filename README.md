@@ -5,7 +5,7 @@ A new Flutter Mobile project.
 ### How to run the mobile application
 You need to write this command line on terminal.
 
-### Instalation
+### Installation
 ```yaml
 dependencies:        
   auto_route: ^5.0.4
